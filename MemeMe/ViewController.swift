@@ -42,8 +42,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func generateMemedImage() -> UIImage {
         
-        self.topToolbar.hidden = true
-        self.bottomToolbar.hidden = true
+        topToolbar.hidden = true
+        bottomToolbar.hidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -53,8 +53,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.topToolbar.hidden = false
-        self.bottomToolbar.hidden = false
+        topToolbar.hidden = false
+        bottomToolbar.hidden = false
         
         return memedImage
     }
@@ -135,14 +135,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func keyboardWillShow(notification: NSNotification) {
         if bottomText.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        if bottomText.isFirstResponder() {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
-        }
+        view.frame.origin.y += getKeyboardHeight(notification)
     }
     
     func unsubscribeFromKeyboardNotifications(){
